@@ -1,4 +1,4 @@
-//#define DBG_MODE
+//#define DBG_MODE ///if this is defined then the bluetooth library will listen to the USB serial instead of Bluetooth Serial
 
 #include "Bluetooth.h"
 
@@ -43,12 +43,8 @@ void onBluetoothDataReceived(Packet *packet)
 
 void setup()
 {
-#ifdef DEBUG
-	pinMode(0, INPUT);
-	pinMode(1, INPUT);
 	Serial.begin(9600);
 	Serial.setTimeout(250);
-#endif
 
 	receiver.Init();
 	receiver.SetConnectedHandler(onBluetoothConnected);
