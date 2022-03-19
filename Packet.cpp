@@ -94,6 +94,10 @@ void Packet::Write(uint8_t type, uint8_t length, uint8_t *buffer)
 {
     m_Type = type;
     m_Length = length;
+    if(m_Buffer)
+    {
+        delete[] m_Buffer;
+    }
     m_Buffer = new uint8_t[m_Length];
     memcpy(m_Buffer, buffer, sizeof(uint8_t) * m_Length);
 }
